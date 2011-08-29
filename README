@@ -21,9 +21,9 @@ To dump the whole flash of my AR4518PW into some file, I do:
 And then turn it on.
 
 A successful flash block read will output '.' while a botched one (a byte or
-more gets lost in the serial port) will return '!'. Even so, unless in a
-hurry, I'd recommend to at least dump twice and compare the dumps, just to be
-on the safe side.
+more gets lost in the serial port) will output '!' and retry. Even so, unless
+in a hurry, I'd recommend to at least dump twice and compare the dumps, just
+to be on the safe side.
 
 See the "erase flash" menu on the menus brnboot provides through the serial
 port in order to figure out the flash layout in these devices. I cannot
