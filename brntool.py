@@ -35,11 +35,10 @@ def memreadblock(ser,addr,size):
 	buf=''
 	while True:
 		l = ser.readline().strip()
-		m = re.match(r'0x([0-9A-F]{8})(( [0-9A-F]{2})+)', l)
+		m = re.match(r'0x([0-9A-F]{8})(( [0-9A-F]{2}){1,16})', l)
 		if m:
 			break
 	while True:
-		m = re.match(r'0x([0-9A-F]{8})(( [0-9A-F]{2}){1,16})', l)
 		if m:
 			addr = int(m.group(1), 16)
 			bytes = [chr(int(x, 16)) for x in m.group(2)[1:].split(' ')]
@@ -47,6 +46,7 @@ def memreadblock(ser,addr,size):
 			#print addr, bytes
 			#print addr,' '.join(['%02X' % b for b in bytes])
 			l = ser.readline().strip()
+			m = re.match(r'0x([0-9A-F]{8})(( [0-9A-F]{2}){1,16})', l)
 		else:
 			break
 	return buf
