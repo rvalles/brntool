@@ -1,9 +1,19 @@
 This tool can, so far, given a serial port connected to a device with
 brnboot/amazonboot, dump its flash into a file.
 
-It has been tried with
-- ARV4518PW (as distributed by the spanish isp ya.com)
+Homepage: https://github.com/rvalles/brntool
+
+It has been tested with
+- ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
 - SMC7904WBRA (as distributed by the spanish isp ya.com)
+
+About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
+
+
+Cloning
+-------
+git clone git://github.com/rvalles/asbestos-avr8susb
+
 
 Notes
 -----
