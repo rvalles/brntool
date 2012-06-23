@@ -4,8 +4,9 @@ brnboot/amazonboot, dump its flash into a file.
 Homepage: https://github.com/rvalles/brntool
 
 It has been tested with
-- ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
-- SMC7904WBRA (as distributed by the spanish isp ya.com)
+- Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
+- Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza)
+- SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
 
 About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
 
@@ -40,6 +41,7 @@ port in order to figure out the flash layout in these devices. I cannot
 guarantee that none of the devices using brnboot will just start erasing the
 whole flash by just selecting the option, so act at your own risk.
 
+Thanks to Jan-Philipp Litza for patches and confirming ARV7506PW11 works.
 -------
 Roc Vallès.
 <vallesroc @.aaa@ @gmail.com>
