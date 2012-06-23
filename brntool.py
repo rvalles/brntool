@@ -6,9 +6,7 @@ import serial
 import sys
 #import struct
 import re
-
 lineregex = re.compile(r'0x(?:[0-9A-F]{8})((?: [0-9A-F]{2}){1,16})')
-
 def get2menu(ser,verbose):
 	if verbose:
 		print >>sys.stderr,"Waiting for a prompt...",
