@@ -6,6 +6,9 @@ import serial
 import sys
 #import struct
 import re
+
+lineregex = re.compile(r'0x(?:[0-9A-F]{8})((?: [0-9A-F]{2}){1,16})')
+
 def get2menu(ser,verbose):
 	if verbose:
 		print >>sys.stderr,"Waiting for a prompt...",
@@ -33,22 +36,16 @@ def memreadblock(ser,addr,size):
 	ser.write(str(size))
 	ser.write('\r')
 	buf=''
-	while True:
-		l = ser.readline().strip()
-		m = re.match(r'0x([0-9A-F]{8})(( [0-9A-F]{2}){1,16})', l)
-		if m:
-			break
-	while True:
-		if m:
-			addr = int(m.group(1), 16)
-			bytes = [chr(int(x, 16)) for x in m.group(2)[1:].split(' ')]
-			buf+=''.join(bytes)
-			#print addr, bytes
-			#print addr,' '.join(['%02X' % b for b in bytes])
-			l = ser.readline().strip()
-			m = re.match(r'0x([0-9A-F]{8})(( [0-9A-F]{2}){1,16})', l)
-		else:
-			break
+	m = False
+	while not m:
+		m = lineregex.match(ser.readline().strip())
+	while m:
+		#addr = int(m.group(1), 16)
+		bytes = [chr(int(x, 16)) for x in m.group(1)[1:].split(' ')]
+		buf+=''.join(bytes)
+		#print addr, bytes
+		#print addr,' '.join(['%02X' % b for b in bytes])
+		m = lineregex.match(ser.readline().strip())
 	return buf
 def memreadblock2file(ser,fd,addr,size):
 	while True:
