@@ -37,7 +37,9 @@ guarantee that none of the devices using brnboot will just start erasing the
 whole flash by just selecting the option, so act at your own risk.
 
 Thanks to Jan-Philipp Litza for patches and confirming ARV7506PW11 works.
+
 Thanks to einsiedlerkrebs for more testing and reminding me about Python 3.
+
 -------
 Roc Vallès.
 <vallesroc @.aaa@ @gmail.com>
