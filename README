@@ -10,12 +10,6 @@ It has been tested with
 
 About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
 
-
-Cloning
--------
-git clone git://github.com/rvalles/asbestos-avr8susb
-
-
 Notes
 -----
 The serial port in these two devices is hidden inside their case. If opened,
