@@ -4,6 +4,7 @@ brnboot/amazonboot, dump its flash into a file.
 Homepage: https://github.com/rvalles/brntool
 
 It has been tested with
+
 * Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
 * Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza and einsiedlerkrebs)
 * SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
