@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import division #1/2 = float, 1//2 = integer, python 3.0 behaviour in 2.6, to make future port to 3 easier.
+from __future__ import print_function #print("blah", file=whatever)
 from optparse import OptionParser
 import serial
 import sys
@@ -9,40 +10,37 @@ import re
 lineregex = re.compile(r'0x(?:[0-9A-F]{8})((?: [0-9A-F]{2}){1,16})')
 def get2menu(ser,verbose):
 	if verbose:
-		print >>sys.stderr,"Waiting for a prompt...",
+		print("Waiting for a prompt...", file=sys.stderr)
 	while True:
-		ser.write("   !")
+		ser.write("   !".encode())
 		if(ser.read(1)==']' and ser.read(1)==':'):
 			while ser.read(256):
 				pass
 			if verbose:
-				print >>sys.stderr,"Ok."
+				print("Ok.", file=sys.stderr)
 			return
 def memreadblock(ser,addr,size):
 	while ser.read(1):
 		pass
-	ser.write('r')
+	ser.write('r'.encode())
 	while not (ser.read(1)=='0' and ser.read(1)=='x'):
 		pass
-	ser.write("%x"%addr)
-	ser.write('\r')
+	ser.write(("%x"%addr).encode())
+	ser.write('\r'.encode())
 	while not (ser.read(1)=='.' and ser.read(1)=='.' and ser.read(1)=='.'):
 		pass
-	ser.write('3')
+	ser.write('3'.encode())
 	while not ser.read(1)==')':
 		pass
-	ser.write(str(size))
-	ser.write('\r')
+	ser.write(str(size).encode())
+	ser.write('\r'.encode())
 	buf=''
 	m = False
 	while not m:
 		m = lineregex.match(ser.readline().strip())
 	while m:
-		#addr = int(m.group(1), 16)
 		bytes = [chr(int(x, 16)) for x in m.group(1)[1:].split(' ')]
 		buf+=''.join(bytes)
-		#print addr, bytes
-		#print addr,' '.join(['%02X' % b for b in bytes])
 		m = lineregex.match(ser.readline().strip())
 	return buf
 def memreadblock2file(ser,fd,addr,size):
