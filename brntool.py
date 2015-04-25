@@ -1,7 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division #1/2 = float, 1//2 = integer, python 3.0 behaviour in 2.6, to make future port to 3 easier.
+#Keep python2 working
+from __future__ import division #1/2 = float, 1//2 = integer
 from __future__ import print_function #print("blah", file=whatever)
+#Keep python2 working end
 from optparse import OptionParser
 import serial
 import sys

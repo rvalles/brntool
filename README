@@ -5,7 +5,7 @@ Homepage: https://github.com/rvalles/brntool
 
 It has been tested with
 - Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
-- Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza)
+- Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza and einsiedlerkrebs)
 - SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
 
 About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
@@ -42,6 +42,7 @@ guarantee that none of the devices using brnboot will just start erasing the
 whole flash by just selecting the option, so act at your own risk.
 
 Thanks to Jan-Philipp Litza for patches and confirming ARV7506PW11 works.
+Thanks to einsiedlerkrebs for more testing and reminding me about Python 3.
 -------
 Roc Vallès.
 <vallesroc @.aaa@ @gmail.com>
