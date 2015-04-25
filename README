@@ -4,14 +4,14 @@ brnboot/amazonboot, dump its flash into a file.
 Homepage: https://github.com/rvalles/brntool
 
 It has been tested with
-- Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
-- Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza and einsiedlerkrebs)
-- SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
+* Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
+* Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza and einsiedlerkrebs)
+* SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
 
 About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
 
-Notes
------
+# Notes
+
 The serial port in these two devices is hidden inside their case. If opened,
 there's a 5x2 header. Going horizontally from the marked pin, which is
 1: 2.RX, 3.TX, 5.GND, 6.+3.3v. UART is at 115200bps.
