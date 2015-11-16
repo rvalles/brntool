@@ -7,6 +7,7 @@ It has been tested with
 
 * Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
 * Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza and einsiedlerkrebs)
+* [Arcadyan ARV7518PW](http://wiki.openwrt.org/toh/astoria/arv7518pw) (with --size=0x800000 to whole memory)
 * SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
 
 About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
