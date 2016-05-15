@@ -15,9 +15,9 @@ About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
 
 # Notes
 
-The serial port in these two devices is hidden inside their case. If opened,
-there's a 5x2 header. Going horizontally from the marked pin, which is
-1: 2.RX, 3.TX, 5.GND, 6.+3.3v. UART is at 115200bps.
+The serial port in ARV4518PW SMC7904WBRA is hidden inside their case. If
+opened, there's a 5x2 header. Going horizontally from the marked pin, which
+is 1: 2.RX, 3.TX, 5.GND, 6.+3.3v. UART is at 115200bps.
 
 Some devices might have a different pinout, but I have yet to encounter any
 such hardware.
