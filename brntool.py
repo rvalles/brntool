@@ -15,7 +15,7 @@ def get2menu(ser,verbose):
 		print("Waiting for a prompt...", file=sys.stderr)
 	while True:
 		ser.write("   !".encode())
-		if(ser.read(1)==']' and ser.read(1)==':'):
+		if(ser.read(1)==b']' and ser.read(1)==b':'):
 			while ser.read(256):
 				pass
 			if verbose:
@@ -25,25 +25,25 @@ def memreadblock(ser,addr,size):
 	while ser.read(1):
 		pass
 	ser.write('r'.encode())
-	while not (ser.read(1)=='0' and ser.read(1)=='x'):
+	while not (ser.read(1)==b'0' and ser.read(1)==b'x'):
 		pass
 	ser.write(("%x"%addr).encode())
 	ser.write('\r'.encode())
-	while not (ser.read(1)=='.' and ser.read(1)=='.' and ser.read(1)=='.'):
+	while not (ser.read(1)==b'.' and ser.read(1)==b'.' and ser.read(1)==b'.'):
 		pass
 	ser.write('3'.encode())
-	while not ser.read(1)==')':
+	while not ser.read(1)==b')':
 		pass
 	ser.write(str(size).encode())
 	ser.write('\r'.encode())
 	buf=''
 	m = False
 	while not m:
-		m = lineregex.match(ser.readline().strip())
+		m = lineregex.match(ser.readline().decode().strip())
 	while m:
 		bytes = [chr(int(x, 16)) for x in m.group(1)[1:].split(' ')]
 		buf+=''.join(bytes)
-		m = lineregex.match(ser.readline().strip())
+		m = lineregex.match(ser.readline().decode().strip())
 	return buf
 def memreadblock2file(ser,fd,addr,size):
 	while True:
@@ -51,8 +51,7 @@ def memreadblock2file(ser,fd,addr,size):
 		if len(buf)==size:
 			break
 		sys.stderr.write('!')
-	sys.stderr.write('.')
-	fd.write(buf)
+	fd.write(buf.encode())
 	return
 def memread(ser,path,addr,size,verbose):
 	#bs=1024
@@ -67,6 +66,8 @@ def memread(ser,path,addr,size,verbose):
 			memreadblock2file(ser,fd,addr,bs)
 			size-=bs
 			addr+=bs
+			print("Addr: " + hex(addr), file=sys.stderr)
+			print("Size: " + str(size), file=sys.stderr)
 		else:
 			memreadblock2file(ser,fd,addr,size)
 			size=0
