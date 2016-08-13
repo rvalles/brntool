@@ -41,8 +41,7 @@ def memreadblock(ser,addr,size):
 	while not m:
 		m = lineregex.match(ser.readline().decode().strip())
 	while m:
-		bytes = [chr(int(x, 16)) for x in m.group(1)[1:].split(' ')]
-		buf+=''.join(bytes)
+		buf+=''.join([chr(int(x, 16)) for x in m.group(1)[1:].split(' ')])
 		m = lineregex.match(ser.readline().decode().strip())
 	return buf
 def memreadblock2file(ser,fd,addr,size):
