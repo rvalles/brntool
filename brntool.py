@@ -51,7 +51,7 @@ def memreadblock2file(ser,fd,addr,size):
 		if len(buf)==size:
 			break
 		sys.stderr.write('!')
-	fd.write(buf.encode())
+	fd.write(buf)
 	return
 def memread(ser,path,addr,size,verbose):
 	#bs=1024
