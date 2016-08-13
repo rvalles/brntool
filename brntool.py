@@ -36,12 +36,15 @@ def memreadblock(ser,addr,size):
 		pass
 	ser.write(str(size).encode())
 	ser.write('\r'.encode())
-	buf=''
+	buf=b''
 	m = False
 	while not m:
 		m = lineregex.match(ser.readline().decode().strip())
 	while m:
-		buf+=''.join([chr(int(x, 16)) for x in m.group(1)[1:].split(' ')])
+		if sys.version_info >= (3, 0):
+			buf+=bytes(m.group(1)[1:].split(' '))
+		else:
+			buf+=''.join([chr(int(x, 16)) for x in m.group(1)[1:].split(' ')])
 		m = lineregex.match(ser.readline().decode().strip())
 	return buf
 def memreadblock2file(ser,fd,addr,size):
