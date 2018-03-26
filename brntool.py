@@ -42,7 +42,7 @@ def memreadblock(ser,addr,size):
 		m = lineregex.match(ser.readline().decode().strip())
 	while m:
 		if sys.version_info >= (3, 0):
-			buf+=bytes(m.group(1)[1:].split(' '))
+			buf+=bytes.fromhex(m.group(1))
 		else:
 			buf+=''.join([chr(int(x, 16)) for x in m.group(1)[1:].split(' ')])
 		m = lineregex.match(ser.readline().decode().strip())
