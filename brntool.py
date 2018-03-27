@@ -60,7 +60,8 @@ def memread(ser,path,addr,size,verbose):
 	bs=10000 #10000 is usually the maximum size for an hexdump on brnboot.
 	get2menu(ser,verbose)
 	if path == "-":
-		fd=sys.stdout
+		# get sys.stdout in Python 2 or sys.stdout.buffer in Python 3
+		fd=getattr(sys.stdout, 'buffer', sys.stdout)
 	else:
 		fd=open(path,"wb")
 	while 0<size:
