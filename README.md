@@ -8,6 +8,7 @@ It has been tested with
 * Arcadyan ARV4518PW http://wiki.openwrt.org/toh/arv4518pw (as distributed by the spanish isp ya.com)
 * Arcadyan ARV7506PW11 (tested by Jan-Philipp Litza and einsiedlerkrebs)
 * [Arcadyan ARV7518PW](http://wiki.openwrt.org/toh/astoria/arv7518pw) (with --size=0x800000 to whole memory)
+* [Arcadyan ARV7519RW22-A-LT](https://openwrt.org/toh/arcadyan/arv7519) (AKA Livebox 2.1)
 * SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
 * [Speedport W 722V Typ B (VGV8529HW22)](https://wiki.openwrt.org/toh/t-com/spw722vtypb) (with --size=0x800000)
 
