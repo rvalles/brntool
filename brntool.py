@@ -42,7 +42,7 @@ def memreadblock(ser,addr,size):
 		m = lineregex.match(ser.readline().decode().strip())
 	while m:
 		if sys.version_info >= (3, 0):
-			buf+=bytes(m.group(1)[1:].split(' '))
+			buf+=bytes.fromhex(m.group(1))
 		else:
 			buf+=''.join([chr(int(x, 16)) for x in m.group(1)[1:].split(' ')])
 		m = lineregex.match(ser.readline().decode().strip())
@@ -60,7 +60,8 @@ def memread(ser,path,addr,size,verbose):
 	bs=10000 #10000 is usually the maximum size for an hexdump on brnboot.
 	get2menu(ser,verbose)
 	if path == "-":
-		fd=sys.stdout
+		# get sys.stdout in Python 2 or sys.stdout.buffer in Python 3
+		fd=getattr(sys.stdout, 'buffer', sys.stdout)
 	else:
 		fd=open(path,"wb")
 	while 0<size:

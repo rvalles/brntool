@@ -11,6 +11,7 @@ It has been tested with
 * [Arcadyan ARV7519RW22-A-LT](https://openwrt.org/toh/arcadyan/arv7519) (AKA Livebox 2.1)
 * SMC SMC7904WBRA (as distributed by the spanish isp ya.com)
 * [Speedport W 722V Typ B (VGV8529HW22)](https://wiki.openwrt.org/toh/t-com/spw722vtypb) (with --size=0x800000)
+* [DSL-EasyBOX 803 A, HW Version R01C](https://openwrt.org/toh/astoria/arv752dpw22)
 
 About brnboot: http://wiki.openwrt.org/doc/techref/bootloader/brnboot
 
@@ -27,9 +28,13 @@ To dump the whole flash of my AR4518PW into some file, I do:
 ./brntool.py --read=AR4518PW_whole.dump --addr=0xB0000000 --verbose
 --size=0x400000
 
+If you specify `-` as the output filename in the `--read` option, the output will be sent to `stdout`.
+On a Windows platform you **must** call the script with the `–u` option in order to prevent the replacement
+of `'\x0a' ` by ` '\x0d\x0a' ` in this case.
+
 And then turn it on.
 
-A successful flash block read will output '.' while a botched one (a byte or
+A successful flash block read will output the address and size of the block while a botched one (a byte or
 more gets lost in the serial port) will output '!' and retry. Even so, unless
 in a hurry, I'd recommend to at least dump twice and compare the dumps, just
 to be on the safe side.
