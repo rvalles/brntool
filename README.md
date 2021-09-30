@@ -1,3 +1,5 @@
+**ABANDONED: Look at the forks for newer code. I do not own any supported device anymore.**
+
 This tool can, so far, given a serial port connected to a device with
 brnboot/amazonboot, dump its flash into a file.
 
